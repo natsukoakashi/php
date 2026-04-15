@@ -28,7 +28,8 @@ $pdo = db_conn();
 // php03 の hash.php の 41行目付近を見てみよう！
 // -----------------------------------------
 /* ↓↓↓ ここにコードを追加 ↓↓↓ */
-$hashed_password = "";
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+          
 /* ↑↑↑ ここまで ↑↑↑ */
 
 
@@ -41,6 +42,9 @@ $hashed_password = "";
 // -----------------------------------------
 /* ↓↓↓ ここにSQLを書く ↓↓↓ */
 $sql = "ここにINSERT文を書く";
+$sql = "INSERT INTO users (name, email, password, created_at) 
+        VALUES (:name, :email, :password, NOW())";
+
 /* ↑↑↑ ここまで ↑↑↑ */
 
 $stmt = $pdo->prepare($sql);

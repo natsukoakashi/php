@@ -34,7 +34,7 @@ $pdo = db_conn();
 // 今回は「email」カラムで検索します！
 // -----------------------------------------
 /* ↓↓↓ ここにコードを追加 ↓↓↓ */
-$stmt = $pdo->prepare("SELECT * FROM gs_user_table WHERE email = :email");
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
 
 // bindValue()でプレースホルダーに値をバインド
 
@@ -82,6 +82,9 @@ if ($user && password_verify($password, $user["password"])) {
     // -----------------------------------------
     // ログイン失敗時の処理
     // -----------------------------------------
-    redirect("login.php");
+    var_dump($password);
+var_dump($user);
+var_dump(password_verify($password, $user["password"]));
+    //redirect("login.php");
 }
 

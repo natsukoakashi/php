@@ -45,6 +45,9 @@ $pdo = db_conn();
 // -----------------------------------------
 /* ↓↓↓ ここにSQLを書く ↓↓↓ */
 $sql = "ここにINSERT文を書く";
+
+$sql = "INSERT INTO posts (user_id, content, created_at) 
+        VALUES (:user_id, :content, sysdate())";
 /* ↑↑↑ ここまで ↑↑↑ */
 
 $stmt = $pdo->prepare($sql);

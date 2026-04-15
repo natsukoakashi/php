@@ -46,7 +46,7 @@ $pdo = db_conn();
 // 自分の投稿のみ削除できるようにしよう
 // -----------------------------------------
 /* ↓↓↓ ここにSQLを書く ↓↓↓ */
-$sql = "ここにDELETE文を書く";
+$sql = "DELETE FROM posts WHERE id = :id AND user_id = :user_id";
 /* ↑↑↑ ここまで ↑↑↑ */
 
 $stmt = $pdo->prepare($sql);

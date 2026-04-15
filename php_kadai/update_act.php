@@ -49,7 +49,9 @@ $pdo = db_conn();
 // php02 の update.php を参考に！
 // -----------------------------------------
 /* ↓↓↓ ここにSQLを書く ↓↓↓ */
-$sql = "ここにUPDATE文を書く";
+
+$sql = "UPDATE posts SET content = :content 
+        WHERE id = :id AND user_id = :user_id";
 /* ↑↑↑ ここまで ↑↑↑ */
 
 $stmt = $pdo->prepare($sql);

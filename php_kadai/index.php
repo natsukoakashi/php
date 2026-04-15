@@ -34,7 +34,6 @@ sschk();
 // ===========================================
 // ここまで来れたらログイン成功！
 // Step 3 に進む前にこの行を削除してね
-exit('ログイン成功！index.php まで到達しました。Step1, 2 が完了したらこの行を削除して Step 3 に進もう！');
 // ===========================================
 
 
@@ -56,8 +55,12 @@ $pdo = db_conn();
 // JOIN users ON posts.user_id = users.id 
 // ORDER BY posts.created_at DESC
 // -----------------------------------------
+
 /* ↓↓↓ ここにコードを追加 ↓↓↓ */
-$sql = "ここにSELECT文を書く";
+$sql = "SELECT posts.*, users.name as user_name 
+        FROM posts 
+        JOIN users ON posts.user_id = users.id 
+        ORDER BY posts.created_at DESC";
 /* ↑↑↑ ここまで ↑↑↑ */
 $stmt = $pdo->prepare($sql);
 $status = $stmt->execute();
